@@ -1,0 +1,29 @@
+.productListItem {
+  display: grid;
+  grid-template-columns: .5fr 1fr min-content;
+  padding: 10px 5px;
+
+  &:hover {
+    background-color: rgba(255,255,255,.05);
+  }
+
+  &+& {
+    border-top: 1px dashed rgb(100, 100, 100);
+  }
+}
+
+.description {
+  font: inherit;
+  font-size:0.8em;
+  opacity: 0.8;
+  font-style: italic;
+  background-color: transparent;
+  resize: none;
+  border: none;
+  color: inherit;
+  outline: none;
+}
+
+.barcode {
+  border-radius: 6px;
+}
