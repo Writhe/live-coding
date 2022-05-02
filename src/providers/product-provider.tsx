@@ -1,7 +1,7 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
-import { API_ROOT, ITEMS_PER_PAGE } from '../config';
-import { IProductsSource, ProductsSource } from '../data-sources/products';
+import { ITEMS_PER_PAGE } from '../config';
+import { IProductsSource } from '../data-sources/products';
 import { IProduct } from '../domain/types';
 
 interface IProductContext {
@@ -9,8 +9,6 @@ interface IProductContext {
   getProducts(): Promise<void>;
   saveDescription(productId: string, newDesc: string): Promise<void>;
 }
-
-const source = new ProductsSource(API_ROOT);
 
 const ProductContext = createContext<IProductContext>({} as IProductContext);
 
