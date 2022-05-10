@@ -58,7 +58,6 @@ const server = http.createServer(async (req, res) => {
       ...commonHeaders,
       'Content-Type': 'application/json',
     });
-    console.log(params);
     const page = Number(params.get('p'));
     const itemsPerPage = Number(params.get('perPage'));
     const offset = (page - 1) * itemsPerPage;
@@ -86,10 +85,7 @@ const server = http.createServer(async (req, res) => {
         (p) => p.product_id === newProduct.product_id
       );
       if (index !== -1) {
-        console.log('Old product:', data[index]);
-        console.log('New product:', newProduct);
         Object.assign(newProduct, { ...data[index], ...newProduct });
-        console.log('Resulting product:', newProduct);
         data.splice(index, 1);
       }
     } else {
@@ -130,7 +126,5 @@ const shutdown = () => {
 };
 
 process.on('SIGINT', shutdown);
-
-data = generateData(100);
 
 start();
