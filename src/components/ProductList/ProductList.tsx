@@ -1,5 +1,5 @@
 import { IProduct } from '../../domain/types';
-import { ProductListItem, ProductListItemStatus } from './ProductListItem';
+import { ProductListItem } from './ProductListItem';
 import styles from './ProductList.module.scss';
 
 export interface IProductListProps {
@@ -18,7 +18,6 @@ export const ProductList = ({
       {products.map((product) => (
         <ProductListItem
           key={product.id}
-          status={ProductListItemStatus.IDLE}
           product={product}
           onClick={onClick}
           onDescriptionChanged={onDescriptionChanged}

@@ -1,9 +1,7 @@
 export const API_ROOT = 'http://localhost:3001';
+export const BLANK_IMAGE =
+  'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
-export const ITEMS_PER_PAGE = 100;
-export const QR_SIZE = 50;
-export const QR_RESOLUTION = 5;
-
-// export const ITEMS_PER_PAGE = 5;
-// export const QR_SIZE = 350;
-// export const QR_RESOLUTION = 300;
+export const ITEMS_PER_PAGE = 10;
+export const IMAGE_SIZE = 50;
+export const IMAGE_RESOLUTION = 5;

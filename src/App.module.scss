@@ -1,4 +1,24 @@
-main {
-  max-width: 1024px;
-  margin: 0 auto;
+.header {
+  align-items: center;
+  background: #1e2026;
+  display:flex;
+  justify-content: center;
+  left:0;
+  padding: 16px;
+  position:fixed;
+  top:0;
+  width: 100%;
+  z-index:2;
+}
+
+.main {
+  min-height: calc(100vh - 70px);
+  padding-top: 70px;
+}
+
+.spinnerOverlay {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
 }

@@ -1,0 +1,16 @@
+.input {
+  display: inline-block;
+  border: 1px solid #282c34;
+  background: #282c34;
+  font: inherit;
+  outline:none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: inherit;
+  width:100%;
+  max-width:300px;
+
+  &:focus {
+    border-color: #243a5e;
+  }
+}

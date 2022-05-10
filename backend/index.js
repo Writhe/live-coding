@@ -5,6 +5,8 @@ const falso = require('@ngneat/falso');
 const port = process.argv[2] || 3000;
 let data = [];
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const commonHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'OPTIONS, POST, GET, PUT',
@@ -51,6 +53,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (method === 'GET' && route === '/products') {
+    await delay(500);
     res.writeHead(200, {
       ...commonHeaders,
       'Content-Type': 'application/json',
@@ -59,14 +62,23 @@ const server = http.createServer(async (req, res) => {
     const page = Number(params.get('p'));
     const itemsPerPage = Number(params.get('perPage'));
     const offset = (page - 1) * itemsPerPage;
+    const query = (params.get('q') || '').toLowerCase();
+    const filtered = query
+      ? data.filter((p) => p.name.toLowerCase().includes(query))
+      : data;
+
     res.write(
-      JSON.stringify({ products: data.slice(offset, offset + itemsPerPage) })
+      JSON.stringify({
+        products: filtered.slice(offset, offset + itemsPerPage),
+      })
     );
     res.end();
     return;
   }
 
   if (method === 'PUT' && route === '/products') {
+    await delay(500);
+
     const newProduct = await getPayload(req);
 
     if (newProduct.product_id) {

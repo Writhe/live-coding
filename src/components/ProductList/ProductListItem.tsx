@@ -1,15 +1,9 @@
 import { ChangeEventHandler } from 'react';
 import { IProduct } from '../../domain/types';
-import { Barcode } from './Barcode';
+import { PixelGrid } from '../PixelGrid/PixelGrid';
 import styles from './ProductListItem.module.scss';
 
-export enum ProductListItemStatus {
-  IDLE,
-  BUSY,
-}
-
 export interface IProductListItemProps {
-  status: ProductListItemStatus;
   product: IProduct;
   onClick(item: IProduct): void;
   onDescriptionChanged(productId: string, newDesc: string): void;
@@ -18,7 +12,6 @@ export interface IProductListItemProps {
 export const ProductListItem = ({
   onClick,
   product,
-  status,
   onDescriptionChanged,
 }: IProductListItemProps) => {
   const handleClick = () => {
@@ -37,8 +30,8 @@ export const ProductListItem = ({
         className={styles.description}
         value={product.description}
       />
-      <Barcode
-        className={styles.barcode}
+      <PixelGrid
+        className={styles.image}
         data={product.description + product.id}
       />
     </div>

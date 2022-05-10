@@ -3,12 +3,14 @@ import { IProduct } from './domain/types';
 import './global.scss';
 import styles from './App.module.scss';
 import { useProducts } from './providers/product-provider';
-import { useEffect } from 'react';
+import { ChangeEventHandler, useEffect } from 'react';
+import { SearchBar } from './components/SearchBar/SearchBar';
+import { Spinner } from './components/Spinner/Spinner';
 
 function App() {
-  const { products, getProducts, saveDescription } = useProducts();
+  const { products, isLoading, getProducts, saveDescription } = useProducts();
   useEffect(() => {
-    getProducts();
+    getProducts('');
   }, []);
 
   const handleProductClick = ({ id, name }: IProduct) => {
@@ -16,13 +18,24 @@ function App() {
   };
 
   return (
-    <main className={styles.main}>
-      <ProductList
-        products={products}
-        onClick={handleProductClick}
-        onDescriptionChanged={saveDescription}
-      />
-    </main>
+    <>
+      <div className={styles.header}>
+        <SearchBar onChange={getProducts} />
+      </div>
+      {isLoading ? (
+        <div className={styles.spinnerOverlay}>
+          <Spinner />
+        </div>
+      ) : (
+        <div className={styles.main}>
+          <ProductList
+            products={products}
+            onClick={handleProductClick}
+            onDescriptionChanged={saveDescription}
+          />
+        </div>
+      )}
+    </>
   );
 }
 

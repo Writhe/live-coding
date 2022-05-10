@@ -48,7 +48,7 @@ const commonFetchOptions: RequestInit = {
   },
 };
 
-export class ProductsSource implements IProductsSource {
+export class ProductSource implements IProductsSource {
   constructor(private readonly apiRoot: string) {}
 
   async getProducts(
