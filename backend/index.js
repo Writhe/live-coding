@@ -1,5 +1,4 @@
 const http = require('http');
-const crypto = require('crypto');
 const falso = require('@ngneat/falso');
 
 const port = process.argv[2] || 3000;
@@ -18,7 +17,7 @@ const commonHeaders = {
 const generateData = (limit) =>
   [...Array(limit)]
     .map(() => ({
-      product_id: crypto.randomUUID(),
+      product_id: falso.randUuid(),
       name: `${falso.randProductName()} by ${falso.randFullName()}`,
       desc: falso.randProductDescription(),
     }))
@@ -53,7 +52,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (method === 'GET' && route === '/products') {
-    await delay(500);
+    await delay(Math.random() * 500 + 500);
     res.writeHead(200, {
       ...commonHeaders,
       'Content-Type': 'application/json',
@@ -76,7 +75,7 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (method === 'PUT' && route === '/products') {
-    await delay(500);
+    await delay(Math.random() * 500 + 500);
 
     const newProduct = await getPayload(req);
 

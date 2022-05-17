@@ -1,8 +1,8 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
-import { ITEMS_PER_PAGE } from '../config';
-import { IProductsSource } from '../data-sources/product-source';
 import { IProduct } from '../domain/types';
+import { IProductsSource } from '../data-sources/product-source';
+import { ITEMS_PER_PAGE } from '../config';
 
 interface IProductContext {
   isLoading: boolean;

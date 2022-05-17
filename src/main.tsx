@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import OldReactDOM from 'react-dom';
+import ReactDOMClient from 'react-dom/client';
+import ReactDOM from 'react-dom';
 
 import { ProductSource } from './data-sources/product-source';
 import { ProductProvider } from './providers/product-provider';
@@ -10,17 +10,17 @@ import './index.css';
 
 const productSource = new ProductSource(API_ROOT);
 
-// ReactDOM.createRoot(document.getElementById('root')!).render(
-//   // <React.StrictMode>
+const rootElement = document.getElementById('root');
+
+// ReactDOMClient.createRoot(rootElement!).render(
 //   <ProductProvider dataSource={productSource}>
 //     <App />
 //   </ProductProvider>
-//   // </React.StrictMode>
 // );
 
-OldReactDOM.render(
+ReactDOM.render(
   <ProductProvider dataSource={productSource}>
     <App />
   </ProductProvider>,
-  document.getElementById('root')
+  rootElement
 );

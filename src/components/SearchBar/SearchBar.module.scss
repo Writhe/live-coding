@@ -1,16 +1,47 @@
+.searchBar {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
 .input {
-  display: inline-block;
-  border: 1px solid #282c34;
   background: #282c34;
-  font: inherit;
-  outline:none;
   border-radius: 6px;
-  padding: 6px 8px;
+  border: 1px solid #282c34;
   color: inherit;
-  width:100%;
+  display: inline-block;
+  font: inherit;
   max-width:300px;
+  outline:none;
+  padding: 6px 8px;
+  width:100%;
 
   &:focus {
     border-color: #243a5e;
   }
+}
+
+button {
+  border-radius: 6px;
+  height:33px;
+  border:0;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 18px;
+  transition: all .5s ease-in-out;
+}
+
+.clearButton {
+  background-color: deepskyblue;
+
+  &:disabled {
+    background-color: #1d5672;
+  }
+}
+
+.loadingButton {
+  background-color: orangered;
 }
