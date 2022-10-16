@@ -1,5 +1,5 @@
 const http = require('http');
-const falso = require('@ngneat/falso');
+const falso = require('../node_modules/@ngneat/falso');
 
 const port = process.argv[2] || 3000;
 let data = [];
@@ -21,7 +21,6 @@ const generateData = (limit) =>
       name: `${falso.randProductName()} by ${falso.randFullName()}`,
       desc: falso.randProductDescription(),
     }))
-    //.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
     .sort((a, b) => a.name.localeCompare(b.name));
 
 const getPayload = (req) =>
